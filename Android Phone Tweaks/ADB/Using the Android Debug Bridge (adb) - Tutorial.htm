@@ -1,0 +1,903 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>Using the Android Debug Bridge (adb) - Tutorial</title>
+      <script src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/cookie_sync_002.txt" async="" type="text/javascript"></script><script src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/cookie_sync_003.txt" async="" type="text/javascript"></script><script src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/cookie_sync.txt" async="" type="text/javascript"></script><script src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/ca-pub-3851443674951530.js" type="text/javascript" async=""></script><script src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">window.mod_pagespeed_start = Number(new Date());</script><link rel="stylesheet" type="text/css" href="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/A.css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.77.1">
+      <meta name="description" content="Using the adb tools with Android This tutorial describes how to use the adb tool to access your Android device or Android virtual device (AVD).">
+      <link rel="shortcut icon" href="http://www.vogella.com/favicon.ico">
+   <script src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/a.js" async="" type="text/javascript"></script></head>
+   <body alink="#0000FF" bgcolor="white" link="#0000FF" text="black" vlink="#840084">
+      
+      
+      <!-- Google analytics (Jennifer) -->
+      
+      <script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-3967758-1']);_gaq.push(['_setDomainName','vogella.com']);_gaq.push(['_setAllowLinker',true]);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>
+      
+      
+      
+      <!-- Load jQuery -->
+      <script type="text/javascript" src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/jquery.js"></script>
+      
+      <!-- jQuery Hide Buttons -->
+      <script type="text/javascript">//<![CDATA[
+var fixed=false;$(document).scroll(function(){if($(this).scrollTop()>900){if(!fixed){fixed=true;$('.book-buttons').css({display:'block'});$('.twitter').css({display:'block'});}}else{if(fixed){fixed=false;$('.book-buttons').css({display:'none'});$('.twitter').css({display:'none'});}}});
+//]]></script>
+      
+      
+      <!-- Lake Quincy Ads -->
+      <script type="text/javascript">function _dmBootstrap(file){var _dma=document.createElement('script');_dma.type='text/javascript';_dma.async=true;_dma.src=('https:'==document.location.protocol?'https://':'http://')+file;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(_dma);}
+function _dmFollowup(file){if(typeof DMAds==='undefined')_dmBootstrap('cdn2.DeveloperMedia.com/a.min.js');}
+(function(){_dmBootstrap('cdn1.DeveloperMedia.com/a.min.js');setTimeout(_dmFollowup,2000);})();</script>
+      
+      <div id="headerpart">
+         	
+         <div id="topnav">
+            		
+            <ul id="home" class="topnav">
+               			
+               <li>
+                  				<a class="homebutton" title="Home" href="http://www.vogella.com/">vogella.com</a>
+                  			
+               </li>
+               
+               			
+               <li>
+                  				<a title="Tutorials" href="http://www.vogella.com/tutorials/">Tutorials</a>
+                  			
+               </li>
+               
+               			
+               <li>
+                  				<a title="Training" href="http://www.vogella.com/training/">Training</a>
+                  			
+               </li>
+               
+               			
+               <li>
+                  				<a title="Books" href="http://www.vogella.com/books/">Books</a>
+                  			
+               </li>
+               			
+               			
+               <li>
+                  				<a title="Blog" href="http://blog.vogella.com/">Blog</a>
+                  			
+               </li>
+               
+               			
+               <li>
+                  				<a title="Shop" href="http://vogella-shop.spreadshirt.de/">Shop</a>
+                  			
+               </li>
+               
+               			
+               <li>
+                  				<a title="Contact vogella GmbH" href="http://www.vogella.com/contact.html">Contact us</a>
+                  			
+               </li>
+               		
+            </ul>
+            	
+         </div> 
+         <!-- topnav -->
+         
+         	
+         <div id="logo">
+            		<a title="vogella.com" href="http://www.vogella.com/">
+               			<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAAAkCAMAAABbsy/+AAACzVBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9LpYSEAAAA7nRSTlMAAQIDBAUGBwgJCgsMDQ4PEBITFBUWFxgZGhscHR4fICEiIyUmJygpKissLS4vMDEyMzQ1Njc4OTo7PD0+P0BBQ0RFRkdISktMTk9QUVJTVFVWWFlaW1xdXl9gYWJjZGZnaGlqa2xtbm9wcXJzdHV2d3h5ent8fX6AgYKDhIWGh4iJi42Oj5CRkpOUlZeYmZqbnJ2en6ChoqSlpqeoqaqrrK2ur7CxsrO0tba3uLq7vb6/wMLExcbHyMnKy8zNzs/Q0dLT1NXW19jZ2tvc3d7f4OHj5OXm5+jp6uvs7e7v8PHy8/T19vf4+fr7/P3+T4Vr0gAABPBJREFUSMfll+lfVGUUx78zLIO4JuWOkTtmLqiYhlqZ5r6glplpo0XmvmRiUS5AGoqKuaRhWS6BAYKaS5GRaa6gAuEGwmCjwgy/v6EXd9AZpE/YR171vDr3/J7nfu8997nnOQf+H8NncMze3/My98a86F3bqKfWFkmS/YakW7GNaxNlnlsi5a99s4sXgaM+zVTxXFOtserukbS1UeWl6X27vq1bS6wGmdLV4e6e9sf0S/1aYZn2SaVPe/q8jmpPrURyiaTpVZ3t7VpSC6wWd6QDJmgd5OGeJXvzxw/bIDmCwHuXir7sAGDq3Bsw/6wNj53VqFw6CWD6XHJEmoPirt8OAYhSWcPHDRsvaTMAfuclnXGodAAAo6Twxw3bLumdys8kSXldjasgacej3254fHwQDI6Pf7Y69aSkUMN8XpI0njFZCQBFynp0WL/d6g0DD6hzdWqhJONduuVJkoqfbH1tGUC2rv2HSIUrFIh1WqrRLJI0AqDXbUmS8usO/WsIQImc5v8K259dbfoolzQbCCy4HJEtSY6IIo01vtl1sPgZB46vn58PQEDfJvfXenft5g9+xgz/Xm1ND2DZ+wHahbXyTEO5kg4BHfuYSJUkh3TaF7BKh/HO0SEADkmzMVmvSMqbaQawxNkl57ZOUgK0TXdKt+aYXDCLMwae+1VS/jB32BFJamfYOUYgtRvgmLQJWF/xDAAp9wIs6do3MSR8p47VA6+jFatf6T29IFPzYZD9fGSHdssd61ywznobcjL6N+/70z33bblMkrYA0MvF0mfAq5LmA90VCVCn5GtWaQoAY5wbYaomATSzyUr9Kz/6Aqx0Bhuw0eqP+UInoJVWusG6S5JGA6yphM2CxrmVv8SJHBMwQYPaOL9wrYlRN7IyDfsTWZmrEACa6SMDtlhNoUdTgMK97nE8LUmFXSC4rBI2Cr8MSakAzFAYkHrJ/Lr6upYEK8J8d7Vhj5OV7fbJxrAnGrCtxQDmrq8tWHo1w3OvSpLtZb8jlSz1eOKgJPUBoKF9E7R0fkisGlRuw7LNrbTQsENlJevuZdfYYcCOHwfLohuyZZ+9c9Cj/jgpSSrPu89SeL4kpbgmbLX5s8jRkoVq4/I01grf8mjDHior6dlV/rPibZh23o1uY4IsDxidSuU5Sr+RpMKOLv0FTeRcMrykCS7PEI3hjBFk3pOV6Ir6HrAmWkywPgbwsnvCGHs45Uy5G+y3U5JsPe/rZ1P7aCTUycnxNyrMkwWNiDKibDohK/0VZSTXyQYsTKMZb+hvqAqsRexN9xfL+b5Msoc90Oc5k656AwMrMloDTZM1AhreLBgAlhibrLDeMd0MhNkCCVco0xRMiCKBDvl/VoF5LXO4wzYkSecHuBewZVoBwITC22lxKbaSqQBdz+lqZsnNKbJCvYSKc9tX7793rQ/hCiXaYcG8S9/N21i4PCV3UtWD4fID1h8r0m686+MhL9hiZBGaLku68ENUC1e1OXblupkBPTUZoN+aw+eTZtSD3lvakHQR8Hkr7cKecczZElc1Hzf8INPFKg7+KuJRyoFJrgPKfVxI/rdVgRFrE9OSo7pxpGZVVYgVwCv99kN9iK8jusbPerFm1WlCAhCYqGkPKZ2q8f1T63SqRtO8Lun6idyK0qUPSyMVVlOYJbGGDzUsctOqqdU1V8P2BNS8f6qVjuJvSNm7AGdv8hEAAAAASUVORK5CYII=" alt="vogella.com"> 
+               		</a>
+            	
+         </div> 
+         <!-- logo -->
+         
+         	
+         <div id="searchfixed">
+            		
+            <form action="http://www.vogella.com/search.html" id="cse-search-box">
+               			
+               <div id="searchwrapper">
+                  
+                  				<input name="cx" value="partner-pub-3851443674951530:3991491935" type="hidden">
+                  				<input name="cof" value="FORID:10" type="hidden">
+                  				<input name="ie" value="UTF-8" type="hidden">
+                  				<input placeholder="Search" id="search_field" name="q" size="55" type="text">
+                  				<input src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/xsrch.png" id="search_button" name="sa" alt="Search" type="image">
+                  			
+               </div>
+               		
+            </form>
+            	
+         </div> 
+         <!-- searchfixed -->
+         
+         
+      </div> 
+      <!-- headerpart -->
+      
+      
+      
+      
+      <div id="leftcol">
+         
+         	Support free tutorials:
+         	<br>
+         	<br>
+         	
+         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            		<input name="cmd" value="_s-xclick" type="hidden">
+            		<input name="hosted_button_id" value="10463995" type="hidden">
+            		<input src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/160x80xvogella-donate.jpg" name="submit" alt="Donation" border="0" height="80" type="image" width="160">
+            	
+         </form>
+         
+         	<br>
+         	<br>
+         
+         	<script type="text/javascript">google_ad_client="ca-pub-3851443674951530";google_ad_slot="6294971031";google_ad_width=160;google_ad_height=600;</script>
+         	<script type="text/javascript" src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/show_ads.js"></script><ins style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" frameborder="0" height="600" width="160"></iframe></ins></ins>
+         
+         	<br>
+         	<br>
+         	<br>
+         	<br><br><br><br><br>
+         
+         	
+         <div data-type="ad" data-publisher="lqm.javaeclipseandroid.site" data-zone="ron" data-format="160x600"></div>
+         	
+         <p></p>
+         
+         
+         
+      </div> 
+      <!-- leftcolumn -->
+      
+      
+      
+      
+      <div id="rightcol">
+         
+         	
+         <!-- vogellas own advertising for training and books --> 	
+         	
+         <p class="training-bg">
+            		<a class="image-z" href="http://www.vogella.com/training/">
+               			<img src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/200x364xvogellatraining_ad.png" alt="vogella training" height="364" width="200">
+               		</a>
+            		<a class="btn-training button1" href="http://www.vogella.com/training/">Training</a>
+            		<a class="btn-training button2" href="http://www.vogella.com/books/index.html">Books</a>
+            	
+         </p> 
+         	
+         	<br>
+         	<br>
+         	
+         	
+         <!-- Conversant Media 160x600 WIDE SKYSCRAPER CODE for Vogella-->
+         	<script type="text/javascript">var vclk_options={sid:88861,media_type:7,version:"1.4"};</script>
+         	<script class="vclk_pub_code" type="text/javascript" src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/pubcode.js"></script><div id="vcmad_1010"></div><script src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/get_003.js" type="text/javascript"></script><a href="http://media.fastclick.net/w/click.here?cid=558100&amp;mid=1109695&amp;m=3&amp;sid=88861&amp;c=0&amp;tp=7&amp;UD=WhI0MjE1NjcwOTM4NzkzNDUzMzaIAb-dQ5ABlIgimAGdtgWgAQOoAQfwAQCyAg8xMTcuMjU1LjExOC4xMzc&amp;upsid=421567093879345336" target="_blank"><img src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/media1109695.gif" alt="" border="0" height="600" width="160"></a>
+
+         	<noscript>
+            		<a href="http://media.fastclick.net/w/click.here?sid=88861&amp;m=3&amp;c=1" target="_blank">
+               			<img src="http://media.fastclick.net/w/get.media?sid=88861&amp;tp=7&amp;d=s&amp;c=1&amp;vcm_acv=1.4" width="160" height="600" border="1">
+               		</a>
+            	
+         </noscript>
+         	
+         <!-- Conversant Media 160x600 WIDE SKYSCRAPER CODE for Vogella -->
+         	
+         
+         	
+         <div style="display: block;" class="twitter">
+            		
+            <div class="twitt">
+               			<a href="http://www.twitter.com/vogellacompany">
+                  				<img src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/xtwitter.png" alt="Follow me on twitter">
+                  			</a>
+               		
+            </div>
+            
+            		
+            <div class="googleplus">
+               			<a rel="me" href="https://profiles.google.com/104044918586174763681">
+                  				<img src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/xgoogle.png" alt="Lars Vogel on Google+">
+                  			</a>
+               		
+            </div>
+            	
+         </div> 
+         <!-- twitter -->
+         	
+         	
+         <div style="display: block;" class="book-buttons">
+            	
+            <div class="books">
+               	
+               	<a href="http://www.vogella.com/books/index.html">
+                  	<img src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/xbooks.png" alt="Purchase books">
+                  	</a>
+               	
+               	<a href="http://www.vogella.com/support.html">
+                  	<img src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/xdonate.png" alt="Support free tutorials">
+                  	</a>
+               	
+               
+            </div> 
+            <!-- books -->
+            
+         </div> 
+         <!-- book buttons -->
+         
+         
+      </div><iframe src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/match_003.htm" style="width: 0px; height: 0px; border-style: none; display: none;" frameborder="0" height="0" width="0"></iframe> 
+      <!--rightcol-->
+      
+      
+      
+      <div class="article" lang="en">
+         <div class="titlepage">
+            <div>
+               <div xmlns:fo="http://www.w3.org/1999/XSL/Format" class="vogellalogo"><a rel="author" href="http://www.vogella.com/people/larsvogel.html"><img src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/100x120xlars-hackagotchi.png" alt="Lars Vogel" height="120" width="100"></a></div>
+               <div>
+                  <h2 class="title"><a name="d31049e1"></a>Using the Android Debug Bridge (adb) - Tutorial
+                  </h2>
+               </div>
+               <div>
+                  <div class="author">
+                     <h3 class="author"><span class="firstname">Lars</span> <span class="surname">Vogel</span></h3>
+                  </div>
+               </div>
+               <div>
+                  <p class="releaseinfo">Version 11.2</p>
+               </div>
+               <div>
+                  <p class="copyright">Copyright © 2009, 2010, 2011, 2012, 2013  Lars Vogel</p>
+               </div>
+               <div>
+                  <p class="pubdate">28.10.2013</p>
+               </div>
+               <div>
+                  <div class="revhistory">
+                     <table summary="Revision History">
+                        <tbody><tr>
+                           <th colspan="4" align="left" valign="top"><b>Revision History</b></th>
+                        </tr>
+                        <tr>
+                           <td align="left">Revision 0.1 - 11.2</td>
+                           <td align="left">04.07.2009 - 28.10.2013</td>
+                           <td>&nbsp;</td>
+                           <td align="left">
+                              bug fixing and enhancements
+                              
+                           </td>
+                        </tr>
+                     </tbody></table>
+                  </div>
+               </div>
+               <div>
+                  <div class="abstract"><a name="abstract"></a><p class="title"><b>Using the adb tools with Android</b></p>
+                     <p> This tutorial describes how to use the adb tool to
+                        access your
+                        Android
+                        device or Android virtual device (AVD).
+                        
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div>
+               <div xmlns:fo="http://www.w3.org/1999/XSL/Format" data-type="ad" data-publisher="lqm.javaeclipseandroid.site" data-zone="ron" data-format="728x90"></div>
+            </div>
+            <hr>
+         </div>
+         <div class="toc">
+            <p><b>Table of Contents</b></p>
+            <dl>
+               <dt><span class="section"><a href="#adb_overview">1. Android Debugging Bridge - adb</a></span></dt>
+               <dt><span class="section"><a href="#adb_shell">2. Shell access via adb</a></span></dt>
+               <dt><span class="section"><a href="#adb_copy">3. Copy files from and to your device</a></span></dt>
+               <dt><span class="section"><a href="#adb_uninstall">4. Uninstall an application via adb</a></span></dt>
+               <dt><span class="section"><a href="#emulator_console">5. Telnet your your Android device</a></span></dt>
+               <dt><span class="section"><a href="#adb_dumpsys">6. Comand line tool dumpsys</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="#adb_dumpsys1">6.1. adb dumpsys</a></span></dt>
+                     <dt><span class="section"><a href="#adb_prank">6.2. Memory consumption overview with dumpsys</a></span></dt>
+                     <dt><span class="section"><a href="#adb_scheduledtasks">6.3. Information about schedule tasks</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="#thankyou">7. Support this website</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="#thankyou">7.1. Thank you</a></span></dt>
+                     <dt><span class="section"><a href="#questions">7.2. Questions and Discussion</a></span></dt>
+                  </dl>
+               </dd>
+               <dt><span class="section"><a href="#resources">8. Links and Literature</a></span></dt>
+               <dd>
+                  <dl>
+                     <dt><span class="section"><a href="#sourcecode">8.1. Source Code</a></span></dt>
+                     <dt><span class="section"><a href="#resources_android">8.2. Android Resources</a></span></dt>
+                     <dt><span class="section"><a href="#resources_general">8.3. vogella Resources</a></span></dt>
+                  </dl>
+               </dd>
+            </dl>
+         </div>	
+         <script type="text/javascript">google_ad_client="ca-pub-3851443674951530";google_ad_slot="6440098216";google_ad_width=728;google_ad_height=90;</script>
+         	<script type="text/javascript" src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/show_ads.js"></script><ins style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;" frameborder="0" height="90" width="728"></iframe></ins></ins>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title"><a name="adb_overview"></a>1.&nbsp;Android Debugging Bridge - adb
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               You can access your Android device via the
+               <em class="wordasword">adb</em>
+               command on the command line.
+               . An
+               <em class="wordasword">Android
+                  virtual device
+                  </em>
+               can be freely accessed, a normal Android
+               phone needs to
+               get
+               <em class="wordasword">rooted</em>, e.g. you need to remove the protection to do everything on this
+               device.
+               
+            </p>
+            <p>
+               The
+               <em class="wordasword">adb</em>
+               tools is located in the
+               <code class="filename">[android-sdks]/platform-tools</code>
+               directory. You should add this directory to your path to have direct
+               access to this command.
+               
+            </p>
+            <p>
+               The
+               <em class="wordasword">adb</em>
+               allows you to send commands to your Android device, pull and push
+               files to it, gives shell access to the Android device and allows you
+               to read information from your device, for example the current memory
+               usage. The following chapter describe the usage of the corresponding
+               commands.
+               
+            </p>
+            <p>If you have several devices running you can issue commands to
+               one
+               individual device.
+               
+            </p>
+            <p>
+               
+            </p><pre class="programlisting"><em class="hl-comment" style="color: #080"># Lists all devices</em>
+adb devices
+<em class="hl-comment" style="color: #080">#Result</em>
+List of devices attached
+emulator-<span class="hl-number">5554</span> attached
+emulator-<span class="hl-number">5555</span> attached
+<em class="hl-comment" style="color: #080"># Issue a command to a specific device</em>
+adb -s emulator-<span class="hl-number">5554</span> shell </pre><p>
+               
+            </p>
+         </div>
+         <!-- Lake Quincy Ads -->
+         <div data-type="ad" data-publisher="lqm.javaeclipseandroid.site" data-zone="ron" data-format="728x90">
+            
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title"><a name="adb_shell"></a>2.&nbsp;Shell access via adb
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               You can get shell access to your Android device via the following
+               command.
+               
+            </p>
+            <p>
+               
+            </p><pre class="programlisting">adb shell </pre><p>
+               
+            </p>
+            <p>
+               This
+               will connect you to your device and give you
+               Linux command
+               line
+               access
+               to the underlying file system, e.g. ls, rm, , cd, mkdir,
+               etc. The
+               application data is stored in the directory
+               "/data/data/package_of_your_app".
+               
+            </p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title"><a name="adb_copy"></a>3.&nbsp;Copy files from and to your device
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <p> You can copy a file from and to your device via the
+               following
+               commands.
+               
+            </p>
+            <p>
+               
+            </p><pre class="programlisting">// assume the gesture file exists on your Android device
+adb pull /sdcard/gestures ~/<span class="hl-keyword">test</span>
+// now copy it back
+adb push ~/<span class="hl-keyword">test</span>/gesture /sdcard/gestures2 </pre><p>
+               
+            </p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title"><a name="adb_uninstall"></a>4.&nbsp;Uninstall an application via adb
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <p> You can uninstall an android application via the shell. Switch
+               the data/app directory (cd /data/app) and simply delete your
+               android
+               application.
+               
+            </p>
+            <p> You can also uninstall an app via adb with the package name.
+               
+            </p>
+            <p>
+               
+            </p><pre class="programlisting">adb uninstall &lt;packagename&gt; </pre><p>
+               
+            </p>
+         </div> 
+         
+         <!-- Conversant Media 728x90 LEADERBOARD CODE for Vogella -->
+         <script type="text/javascript">var vclk_options={sid:88861,media_type:5,version:"1.4"};</script>
+         <script class="vclk_pub_code" type="text/javascript" src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/pubcode_002.js"></script><div id="vcmad_34033"></div><script src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/get_002.js" type="text/javascript"></script><a href="http://media.fastclick.net/w/click.here?cid=562965&amp;mid=1129034&amp;m=1&amp;sid=88861&amp;c=0&amp;tp=5&amp;UD=WhI0MjE1NjcwOTM4NzkzNDUzMzaIAcr0RJABla4imAGdtgWgAQGoAQXwAQCyAg8xMTcuMjU1LjExOC4xMzc&amp;upsid=421567093879345336" target="_blank"><img src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/media1129034.gif" alt="" border="0" height="90" width="728"></a>
+
+         <noscript>
+            	<a href="http://media.fastclick.net/w/click.here?sid=88861&amp;m=1&amp;c=1" target="_blank">
+               		<img src="http://media.fastclick.net/w/get.media?sid=88861&amp;tp=5&amp;d=s&amp;c=1&amp;vcm_acv=1.4" width="728" height="90" border="1">
+               	</a>
+            
+         </noscript>
+         
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title"><a name="emulator_console"></a>5.&nbsp;Telnet your your Android device
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               Alternatively to adb you can also use telnet to connect to the
+               device.
+               This allows you to simulate certain things, e.g. incoming
+               call, change
+               the network connectivity, set your current geocodes, etc.
+               Use "telnet
+               localhost 5554" to connect to your simulated
+               device. To
+               exit the console
+               session, use the
+               <code class="code">quit</code>
+               or
+               <code class="code">exit</code>
+               command.
+               
+            </p>
+            <p>For example to change the power settings of your phone, to
+               receive an sms and to get an incoming call make the following.
+               
+            </p>
+            <p>
+               
+            </p><pre class="programlisting"><em class="hl-comment" style="color: #080"># connects to device</em>
+telnet localhost <span class="hl-number">5554</span>
+<em class="hl-comment" style="color: #080"># set the power level</em>
+power status full
+power status charging
+<em class="hl-comment" style="color: #080"># make a call to the device</em>
+gsm call <span class="hl-number">012041293123</span>
+<em class="hl-comment" style="color: #080"># send a sms to the device</em>
+sms send <span class="hl-number">12345</span> Will be home soon
+<em class="hl-comment" style="color: #080"># set the geo location</em>
+geo fix <span class="hl-number">48</span> <span class="hl-number">51</span> </pre><p>
+               
+            </p>
+            <p>
+               For more information on the emulator console please see
+               <a class="ulink" href="http://developer.android.com/guide/developing/tools/emulator.html#console" target="_top"> Emulator Console manual</a>
+               
+            </p>
+         </div>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title"><a name="adb_dumpsys"></a>6.&nbsp;Comand line tool dumpsys
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="adb_dumpsys1"></a>6.1.&nbsp;adb dumpsys
+                        </h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  The
+                  <code class="code">adb dumpsys</code>
+                  command allows you to retain information about the Android system and
+                  the running applications.
+                  
+               </p>
+               <p>To get currently memory consumption of an application you can
+                  use
+                  the following command.
+                  
+                  
+               </p>
+               <p>
+                  
+               </p><pre class="programlisting">adb shell dumpsys meminfo &lt;<span class="hl-keyword">package</span>.name&gt; </pre><p>
+                  
+               </p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="adb_prank"></a>6.2.&nbsp;Memory consumption overview with dumpsys
+                        </h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  The
+                  <code class="code">adb shell procrank</code>
+                  lists you all application in the order of their memory consumption.
+                  This command does not work on real device. Use the
+                  <code class="code">adb shell dumpsys meminfo</code>
+                  instead.
+                  
+               </p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="adb_scheduledtasks"></a>6.3.&nbsp;Information about schedule tasks
+                        </h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  To find which alarms are scheduled for your application, use the
+                  <code class="code">adb shell dumpsys alarm</code>
+                  command and look for your package name. The output might be similar
+                  to the following:
+                  
+               </p>
+               <p>
+                  
+               </p><pre class="programlisting">RTC #<span class="hl-number">6</span>: Alarm{434a1234 type <span class="hl-number">1</span> com.example}
+    type=<span class="hl-number">1</span> whenElapsed=<span class="hl-number">608198149</span> when=+12m13s122ms window=-<span class="hl-number">1</span> repeatInterval=<span class="hl-number">0</span> count=<span class="hl-number">0</span>
+    operation=PendingIntent{430cf612: PendingIntentRecord{*43bbf887* com.vogella startService}} </pre><p>
+                  
+               </p>
+               <p>This shows the info that the alarm is scheduled for approx. 12
+                  minutes.
+                  
+               </p>
+               <p>
+                  To find out the information about the pending intent, run the
+                  <code class="code">adb shell dumpsys activity intents</code>
+                  command
+                  and look
+                  for
+                  the ID of the PendingIntentRecord (in this example
+                  43bbf887):
+                  
+               </p>
+               <p>
+                  
+               </p><pre class="programlisting">* PendingIntentRecord{43bbf887 com.vogella startService}
+    uid=<span class="hl-number">10042</span> packageName=com.vogella type=startService flags=<span class="hl-number">0x0</span>
+    requestIntent=act=MY_ACTION cmp=com.vogella/.MyService (has extras) </pre><p>
+                  
+               </p>
+            </div>
+         </div> 
+         
+         <!-- Conversant Media 728x90 LEADERBOARD CODE for Vogella -->
+         <script type="text/javascript">var vclk_options={sid:88861,media_type:5,version:"1.4"};</script>
+         <script class="vclk_pub_code" type="text/javascript" src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/pubcode_002.js"></script><div id="vcmad_98896"></div><script src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/get.js" type="text/javascript"></script><a href="http://media.fastclick.net/w/click.here?cid=562965&amp;mid=1129034&amp;m=1&amp;sid=88861&amp;c=0&amp;tp=5&amp;UD=WhI0MjE1NjcwOTM4NzkzNDUzMzaIAcr0RJABla4imAGdtgWgAQGoAQXwAQCyAg8xMTcuMjU1LjExOC4xMzc&amp;upsid=421567093879345336" target="_blank"><img src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/media1129034.gif" alt="" border="0" height="90" width="728"></a>
+
+         <noscript>
+            	<a href="http://media.fastclick.net/w/click.here?sid=88861&amp;m=1&amp;c=1" target="_blank">
+               		<img src="http://media.fastclick.net/w/get.media?sid=88861&amp;tp=5&amp;d=s&amp;c=1&amp;vcm_acv=1.4" width="728" height="90" border="1">
+               	</a>
+            
+         </noscript>
+         
+         <!-- Conversant Media 728x90 LEADERBOARD CODE for Vogella -->
+         
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title"><a name="thankyou"></a>7.&nbsp;Support this website
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <p>
+               This tutorial is Open Content under the
+               <a class="ulink" href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en" target="_top">
+                  CC BY-NC-SA 3.0 DE</a>
+               license. Source code in this tutorial is distributed under the
+               <a class="ulink" href="https://www.eclipse.org/legal/epl-v10.html" target="_top">Eclipse Public License</a>.
+               See the
+               <a class="ulink" href="http://www.vogella.com/license.html" target="_top">vogella License</a> page
+               for details on the terms of reuse.
+               
+            </p>
+            <p>
+               Writing and updating these tutorials is a lot of work.
+               If this free community service was helpful,
+               you can support the cause by giving a tip
+               as well as reporting typos and factual errors.
+               
+            </p>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="thankyou"></a>7.1.&nbsp;Thank you
+                        </h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  
+                  	
+               </p>
+               <p></p>
+               <p>
+                  	Please consider a contribution if this article helped you.
+                  	
+               </p>
+               <table style="border: none;">
+                  <tbody><tr>
+                     			
+                     <td>
+                        				<a href="http://flattr.com/thing/49772/Tutorials-for-Eclipse-Java-Android-and-Webprogramming" target="_blank">
+                           					<img src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/xflattr.png" alt="Flattr this" title="Flattr this" border="0">
+                           				</a>
+                        			
+                     </td>
+                     
+                     			
+                     <td>
+                        				
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                           					<input name="cmd" value="_s-xclick" type="hidden">
+                           					<input name="hosted_button_id" value="10463995" type="hidden">
+                           					<input src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/xvogella-donate-transparent.png" name="submit" alt="PayPal Donate" border="0" type="image">
+                           				
+                        </form>
+                        			
+                     </td>
+                     		
+                  </tr>
+               </tbody></table>
+               <p>
+                  
+                  
+                  
+                  
+               </p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="questions"></a>7.2.&nbsp;Questions and Discussion
+                        </h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  If you find errors in this tutorial, please notify me
+                  (see the
+                  <a class="ulink" href="#top" target="_top">top of the page</a>).
+                  Please note that due to the high volume of feedback I
+                  receive, I
+                  cannot answer questions to your implementation. Ensure you
+                  have read
+                  the
+                  <a class="ulink" href="http://www.vogella.com/faq.html" target="_top">vogella FAQ</a>
+                  as
+                  I don't respond to questions already answered there.
+                  
+               </p>
+            </div>
+         </div>
+         <script type="text/javascript">google_ad_client="ca-pub-3851443674951530";google_ad_slot="8639282357";google_ad_width=728;google_ad_height=90;</script>
+         <script type="text/javascript" src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/show_ads.js"></script><ins style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent"><ins id="aswift_2_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;" frameborder="0" height="90" width="728"></iframe></ins></ins>
+         <div class="section">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h2 class="title"><a name="resources"></a>8.&nbsp;Links and Literature
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="sourcecode"></a>8.1.&nbsp;Source Code
+                        </h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/code/index.html" target="_top">Source Code of Examples</a>
+                  
+               </p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="resources_android"></a>8.2.&nbsp;Android Resources
+                        </h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/Android/article.html" target="_top">
+                     Android Introduction Tutorial</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/AndroidListView/article.html" target="_top">
+                     Android ListView and ListActivity</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/AndroidSQLite/article.html" target="_top">
+                     Android SQlite Database</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/AndroidWidgets/article.html" target="_top">
+                     Android Widgets</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/AndroidLiveWallpaper/article.html" target="_top">
+                     Android Live Wallpaper</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/AndroidServices/article.html" target="_top">
+                     Android Services</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/AndroidLocationAPI/article.html" target="_top">
+                     Android Location API and Google Maps</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/AndroidIntent/article.html" target="_top">
+                     Android Intents</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/AndroidNetworking/article.html" target="_top">
+                     Android and Networking</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://code.google.com/intl/de-DE/android/" target="_top">
+                     Android Homepage</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://developer.android.com/" target="_top">
+                     Android Developer Homepage</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://code.google.com/p/android/issues/list" target="_top">
+                     Android Issues / Bugs</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://groups.google.com/group/android-developers" target="_top">
+                     Android Google Groups</a>
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://android-developers.blogspot.com/2009/04/live-folders.html" target="_top">
+                     Android Live Folder</a>
+                  
+               </p>
+            </div>
+            <div class="section">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h3 class="title"><a name="resources_general"></a>8.3.&nbsp;vogella Resources
+                        </h3>
+                     </div>
+                  </div>
+               </div>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/training/" target="_top">vogella Training</a> Android and Eclipse Training from the vogella team
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/Android/article.html" target="_top">Android Tutorial</a> Introduction to Android Programming
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/GWT/article.html" target="_top">GWT Tutorial</a> Program in Java, compile to JavaScript and HTML
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/EclipseRCP/article.html" target="_top">Eclipse RCP Tutorial</a> Create native applications in Java
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/JUnit/article.html" target="_top">JUnit Tutorial</a> Test your application
+                  
+               </p>
+               <p>
+                  <a class="ulink" href="http://www.vogella.com/tutorials/Git/article.html" target="_top">Git Tutorial</a> Put all your files in a distributed version control system
+                  
+               </p>
+            </div>
+         </div><img src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/c82eae3aae0b4c11818e9e422c46984d.gif" alt="" height="1" width="1"></div><iframe src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/match_003.htm" style="width: 0px; height: 0px; border-style: none; display: none;" frameborder="0" height="0" width="0"></iframe><iframe src="Using%20the%20Android%20Debug%20Bridge%20%28adb%29%20-%20Tutorial_files/match_003.htm" style="width: 0px; height: 0px; border-style: none; display: none;" frameborder="0" height="0" width="0"></iframe>
+      
+      
+      
+   <script pagespeed_no_defer="">//<![CDATA[
+(function(){var c=encodeURIComponent,f=window,h="performance",k="",l="&",m="&b_csi=",n="&cces=",p="&ccis=",q="&ccos=",r="&ccrl=",s="&ccul=",t="&connect=",u="&dns=",v="&dom_c=",w="&dwld=",x="&fp=",y="&htmlAt=",z="&ifr=0",A="&ifr=1",B="&nav=",C="&nrp=",D="&nt=",E="&r",F="&ref=",G="&req_start=",H="&ttfb=",I="&url=",J="=",K="?",L="EventStart",M="beforeunload",N="ets=",O="load",P="load:",Q="on",R="unload:";f.pagespeed=f.pagespeed||{};var S=f.pagespeed,T=function(a,d,b,e){this.d=a;this.a=d;this.b=b;this.e=e};
+S.beaconUrl=k;
+T.prototype.c=function(){var a=this.d,d=f.mod_pagespeed_start,b=Number(new Date)-d,a=a+(-1==a.indexOf(K)?K:l),a=a+N+(this.a==O?P:R),a=a+b;if(this.a!=M||!f.mod_pagespeed_loaded){a+=E+this.a+J;if(f[h]){var b=f[h].timing,e=b.navigationStart,g=b.requestStart,a=a+(b[this.a+L]-e),a=a+(B+(b.fetchStart-e)),a=a+(u+(b.domainLookupEnd-b.domainLookupStart)),a=a+(t+(b.connectEnd-b.connectStart)),a=a+(G+(g-e)),a=a+(H+(b.responseStart-g)),a=a+(w+(b.responseEnd-b.responseStart)),a=a+(v+(b.domContentLoadedEventStart-e));
+f[h].navigation&&(a+=D+f[h].navigation.type);e=-1;b.msFirstPaint?e=b.msFirstPaint:f.chrome&&f.chrome.loadTimes&&(e=Math.floor(1E3*f.chrome.loadTimes().firstPaintTime));-1!=e&&(a+=x+(e-g))}else a+=b;S.getResourceTimingData&&f.parent==f&&(a+=S.getResourceTimingData());a+=f.parent!=f?A:z;this.a==O&&(f.mod_pagespeed_loaded=!0,(b=f.mod_pagespeed_num_resources_prefetched)&&(a+=C+b),(b=f.mod_pagespeed_prefetch_start)&&(a+=y+(d-b)));S.panelLoader&&(d=S.panelLoader.getCsiTimingsString(),d!=k&&(a+=m+d));S.criticalCss&&
+(d=S.criticalCss,a+=p+d.total_critical_inlined_size+n+d.total_original_external_size+q+d.total_overhead_size+r+d.num_replaced_links+s+d.num_unreplaced_links);this.b!=k&&(a+=this.b);document.referrer&&(a+=F+c(document.referrer));a+=I+c(this.e);S.beaconUrl=a;(new Image).src=a}};S.f=function(a,d,b,e){var g=new T(a,d,b,e);f.addEventListener?f.addEventListener(d,function(){g.c()},!1):f.attachEvent(Q+d,function(){g.c()})};S.addInstrumentationInit=S.f;})();
+
+pagespeed.addInstrumentationInit('/mod_pagespeed_beacon', 'load', '', 'http://www.vogella.com/tutorials/AndroidCommandLine/article.html');
+//]]></script>
+</body></html>

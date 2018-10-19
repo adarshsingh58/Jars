@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html style="overflow: hidden;" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Comment System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="a_data/screen.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="http://durf93lyw1cb9.cloudfront.net/build/1405916303/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <script src="After%20You%20Learn%20These%2021%20Google%20Tricks,%20The%20Internet%20Will%20Never%20Be%20The%20Same.%20-%209GAG_files/analytics.js" async=""></script><script type="text/javascript" src="a_data/commentAll.js"></script>
+    <!--[if lt IE 9]><script type="text/javascript" src="//durf93lyw1cb9.cloudfront.net/build/1405916303/js/html5.js"></script><![endif]-->
+</head>
+
+<body class="" style="overflow-x:hidden;">
+
+    <section class="post-comment" id="commentSys" style="overflow:hidden;">
+        
+        
+<div class="comment-box indent-1 selected badge-reply-box badge-template" style="display:none;">
+    <div class="avatar">
+        <div class="image-container"><img class="badge-cuser-avatar" src="a_data/default.jpg"></div>
+    </div>
+    <div class="payload">
+        <div class="textarea-container">
+            <textarea class="badge-reply-textarea" placeholder="Leave a comment"></textarea>
+        </div>
+        <div class="action">
+            <a class="cmnt-btn grey size-30 submit-comment badge-submit-reply-trigger" href="javascript:void(0)">Post</a>
+            <p class="word-count"><span class="badge-reply-remain">500</span></p>
+            <p style="color:red;"><span class="badge-comment-response-reply"></span></p>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+                
+        <div class="comment-entry badge-comment-template badge-comment" style="display:none;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a href="javascript:void(0)"><img class="badge-user-avatar badge-normal" src="data:image/jpeg;base64,"></a>
+                    <img class="badge-user-avatar badge-read-only" src="data:image/jpeg;base64,">
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a class="username badge-author-name badge-normal" href="javascript:void(0);"></a>
+                        <span class="username username-read-only badge-author-name badge-read-only"></span>
+                        <span class="points badge-vote-count"></span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"></span>
+                    </p>
+                </div>
+                <div class="content badge-content">
+                    <p></p>
+                </div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div class="extra-menu">
+
+                <p><a class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name">@Huge_ijsllijk</span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        
+<div class="comment-entry collapse badge-comment-entry-collapsed" style="display:none;">
+    <a class="collapsed-comment badge-collapsed-comment" href="javascript:void(0);">
+        <div class="dot-collapse">
+            <span class="dot-1"></span>
+            <span class="dot-2"></span>
+            <span class="dot-3"></span>
+        </div>
+    </a>
+</div>
+
+        
+<div class="comment-entry badge-comment-load-more-btn badge-comment-load-more-template" style="display:none;">
+    <a class="collapsed-comment" href="javascript:void(0);">
+        <span>Load More Replies…</span>
+    </a>
+</div>
+
+        
+        <div class="comment-embed">
+        
+            
+<div class="comment-section-title badge-my-comment-section-header" style="display:none;">
+    <h3><span class="badge-my-comment-title">My Comments</span> <span class="badge-my-comment-count"></span></h3>
+    <div class="clearfix"></div>
+</div>
+<div class="badge-my-comments-container" style="display:none;"></div>
+<div class="comment-section-spacer badge-my-comments-spacer" style="display:none;"></div>
+
+
+                        <div class="comment-box first badge-comment-box">
+    <div class="avatar">
+        <div class="image-container"><img class="badge-cuser-avatar" src="a_data/default.jpg"></div>
+    </div>
+    <div class="payload">
+        <div class="textarea-container badge-post-textarea-container">
+            <textarea class="post-text-area badge-post-textarea" placeholder="Leave a comment" style="-moz-box-sizing: border-box;"></textarea>
+        </div>
+                <div class="action">
+                        <a class="cmnt-btn grey size-30 submit-comment badge-custom-login-url" href="https://9gag.com/login?next=http%3A%2F%2F9gag.com%2Fgag%2FazbN36j#comment" target="_blank">Login</a>
+                        <div class="clearfix"></div>
+        </div>
+           </div> 
+
+    <div class="clearfix"></div>
+</div><!--end .comment-box-->
+
+                        
+            <div class="badge-comments-container"><div class="comment-entry badge-comment first" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/grandhipster"><img class="badge-user-avatar badge-normal" src="a_data/3200634_100_15.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/grandhipster">grandhipster</a>
+                        
+                        <span class="points badge-vote-count">3888 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056817621234" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">google will also help you find your best porn</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/grandhipster"><img class="badge-user-avatar badge-normal" src="a_data/3200634_100_15.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/grandhipster">grandhipster</a>
+                        
+                        <span class="points badge-vote-count">1497 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056817940091" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">after you learn the trick to find the best porn using google, you dont really care about other tricks anymore.</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/rick_the_dick"><img class="badge-user-avatar badge-normal" src="a_data/default_62_100_v0.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/rick_the_dick">rick_the_dick</a>
+                        
+                        <span class="points badge-vote-count">359 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056821037753" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">There comes a time when certain body parts hurt and you want to do other stuff.</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div id="jsid-load-more-c_14056821037753" class="comment-entry badge-comment-load-more-btn indent-1" style="display: block;">
+    <a class="collapsed-comment" href="javascript:void(0);">
+        <span>Load More Replies…</span>
+    </a>
+</div><div class="comment-entry badge-comment" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/fridagamer"><img class="badge-user-avatar badge-normal" src="a_data/18992259_100_10.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/fridagamer">fridagamer</a>
+                        
+                        <span class="points badge-vote-count">489 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056818327155" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">I won't remember all this!</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/i_am_putin"><img class="badge-user-avatar badge-normal" src="a_data/1_106_100_v0.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/i_am_putin">i_am_putin</a>
+                        
+                        <span class="points badge-vote-count">548 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056818860579" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">@fridawaldt I'll remember you forever *smooth as a putin*</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/fridagamer"><img class="badge-user-avatar badge-normal" src="a_data/18992259_100_10.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/fridagamer">fridagamer</a>
+                        
+                        <span class="points badge-vote-count">78 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056819869051" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">@justgaynothomo Smoothness leader!</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div id="jsid-load-more-c_14056819869051" class="comment-entry badge-comment-load-more-btn indent-1" style="display: block;">
+    <a class="collapsed-comment" href="javascript:void(0);">
+        <span>Load More Replies…</span>
+    </a>
+</div><div class="comment-entry badge-comment" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/puthen"><img class="badge-user-avatar badge-normal" src="a_data/17900695_100_4.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/puthen">puthen</a>
+                        
+                        <span class="points badge-vote-count">651 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14057114456471" target="_blank">19 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">most of those tricks didn't work outside USA.</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/puthen"><img class="badge-user-avatar badge-normal" src="a_data/17900695_100_4.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/puthen">puthen</a>
+                        
+                        <span class="points badge-vote-count">117 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14057114526678" target="_blank">19 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">I'm sad.</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/thisisputin"><img class="badge-user-avatar badge-normal" src="a_data/thisisputin_17202396_100_v1.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/thisisputin">thisisputin</a>
+                        
+                        <span class="points badge-vote-count">99 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14058574483273" target="_blank">5d</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">No they don't, then they complain why i hate them so much</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div id="jsid-load-more-c_14058574483273" class="comment-entry badge-comment-load-more-btn indent-1" style="display: block;">
+    <a class="collapsed-comment" href="javascript:void(0);">
+        <span>Load More Replies…</span>
+    </a>
+</div><div class="comment-entry badge-comment" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/dimejiohn93"><img class="badge-user-avatar badge-normal" src="a_data/10148874_100_1.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/dimejiohn93">dimejiohn93</a>
+                        
+                        <span class="points badge-vote-count">1437 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056818628466" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">Hang on...are you telling me you can use Google to look up information??? Ive been using it wrong all this time</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/grandhipster"><img class="badge-user-avatar badge-normal" src="a_data/3200634_100_15.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/grandhipster">grandhipster</a>
+                        
+                        <span class="points badge-vote-count">199 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056824724570" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">no you're not. porn also qualifies as information.. you'd learn stuff from it</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/carloschang"><img class="badge-user-avatar badge-normal" src="a_data/carloschang_3577984_100_v1.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/carloschang">carloschang</a>
+                        
+                        <span class="points badge-vote-count">44 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14057017724258" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">You're still giving it a better use than OP searching for Creed for fuck's sake</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div id="jsid-load-more-c_14057017724258" class="comment-entry badge-comment-load-more-btn indent-1" style="display: block;">
+    <a class="collapsed-comment" href="javascript:void(0);">
+        <span>Load More Replies…</span>
+    </a>
+</div><div class="comment-entry badge-comment" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/goffelpoes"><img class="badge-user-avatar badge-normal" src="a_data/goffelpoes_4012902_100_v39.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/goffelpoes">goffelpoes</a>
+                        
+                        <span class="points badge-vote-count">82 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056826577305" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">What is the answer to life, the universe and everything.</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/i_like_grapes"><img class="badge-user-avatar badge-normal" src="a_data/i_like_grapes_16919952_100_v2.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/i_like_grapes">i_like_grapes</a>
+                        
+                        <span class="points badge-vote-count">407 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056828268600" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">Darude - Sandstorm</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/felyppe"><img class="badge-user-avatar badge-normal" src="a_data/default_64_100_v0.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/felyppe">felyppe</a>
+                        
+                        <span class="points badge-vote-count">313 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056841176206" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">42</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div id="jsid-load-more-c_14056841176206" class="comment-entry badge-comment-load-more-btn indent-1" style="display: block;">
+    <a class="collapsed-comment" href="javascript:void(0);">
+        <span>Load More Replies…</span>
+    </a>
+</div><div class="comment-entry badge-comment" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/noam93"><img class="badge-user-avatar badge-normal" src="a_data/default_30_100_v0.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/noam93">noam93</a>
+                        
+                        <span class="points badge-vote-count">138 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056853921708" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">&gt;this is interesting
+&gt;scroll a bit
+&gt;this is really helpful
+&gt;see the part about creed being his favorite band
+&gt;track OP down
+&gt;shove eggs up his anus
+&gt;punch him
+&gt;heat him
+&gt;eat the omelte</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/noam93"><img class="badge-user-avatar badge-normal" src="a_data/default_30_100_v0.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/noam93">noam93</a>
+                        
+                        <span class="points badge-vote-count">30 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056854546731" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">why 9gag why
+i just wanted enters, no spaces</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/amyvictorian"><img class="badge-user-avatar badge-normal" src="a_data/amyvictorian_6766589_100.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/amyvictorian">amyvictorian</a>
+                        
+                        <span class="points badge-vote-count">7 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14058572515690" target="_blank">5d</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">Is thereshomething wrong with creed? :s</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div id="jsid-load-more-c_14058572515690" class="comment-entry badge-comment-load-more-btn indent-1" style="display: block;">
+    <a class="collapsed-comment" href="javascript:void(0);">
+        <span>Load More Replies…</span>
+    </a>
+</div><div class="comment-entry badge-comment" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/silver_knee"><img class="badge-user-avatar badge-normal" src="a_data/default_108_100_v0.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/silver_knee">silver_knee</a>
+                        
+                        <span class="points badge-vote-count">113 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056825032581" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">I sometimes think, companies have paid 9gagger here to show off their products...</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/nata741"><img class="badge-user-avatar badge-normal" src="a_data/default_33_100_v0.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/nata741">nata741</a>
+                        
+                        <span class="points badge-vote-count">16 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056885314603" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">This. or 9gag gets the money.</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/jaybiooh86"><img class="badge-user-avatar badge-normal" src="a_data/default_33_100_v0.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/jaybiooh86">jaybiooh86</a>
+                        
+                        <span class="points badge-vote-count">72 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14058503543561" target="_blank">5d</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">Are you sure? Btw i think Nutella tastes really great.</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div id="jsid-load-more-c_14058503543561" class="comment-entry badge-comment-load-more-btn indent-1" style="display: block;">
+    <a class="collapsed-comment" href="javascript:void(0);">
+        <span>Load More Replies…</span>
+    </a>
+</div><div class="comment-entry badge-comment" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/rstorres"><img class="badge-user-avatar badge-normal" src="a_data/default_37_100_v0.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/rstorres">rstorres</a>
+                        
+                        <span class="points badge-vote-count">46 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056875264740" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">Favorite band: Creed? C'mon, brother, show us some respect...</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/mvazgar"><img class="badge-user-avatar badge-normal" src="a_data/default_37_100_v0.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/mvazgar">mvazgar</a>
+                        
+                        <span class="points badge-vote-count">10 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14058509539907" target="_blank">5d</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">Alrighty then.</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/youdliketoknow"><img class="badge-user-avatar badge-normal" src="a_data/youdliketoknow_1368989_100_v8.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/youdliketoknow">youdliketoknow</a>
+                        
+                        <span class="points badge-vote-count">7 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14059455770753" target="_blank">4d</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">creed is awesome</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div id="jsid-load-more-c_14059455770753" class="comment-entry badge-comment-load-more-btn indent-1" style="display: block;">
+    <a class="collapsed-comment" href="javascript:void(0);">
+        <span>Load More Replies…</span>
+    </a>
+</div><div class="comment-entry badge-comment" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/drakeyolo"><img class="badge-user-avatar badge-normal" src="a_data/drakeyolo_2706493_100_v1.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/drakeyolo">drakeyolo</a>
+                        
+                        <span class="points badge-vote-count">29 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056819624634" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">My penis has a better trick, if I play with it for a few minutes, a tasty white liquid comes out!</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/xLethalZz"><img class="badge-user-avatar badge-normal" src="a_data/default_46_100_v1.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/xLethalZz">xLethalZz</a>
+                        
+                        <span class="points badge-vote-count">204 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056823125430" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">@drakeyolo How do you know it's tasty..?</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/dennis92"><img class="badge-user-avatar badge-normal" src="a_data/default_104_100_v0.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/dennis92">dennis92</a>
+                        
+                        <span class="points badge-vote-count">40 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056843722371" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">Because Oreo.</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div id="jsid-load-more-c_14056843722371" class="comment-entry badge-comment-load-more-btn indent-1" style="display: block;">
+    <a class="collapsed-comment" href="javascript:void(0);">
+        <span>Load More Replies…</span>
+    </a>
+</div><div class="comment-entry badge-comment" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/overlymannlyman"><img class="badge-user-avatar badge-normal" src="a_data/3573548_100_9.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/overlymannlyman">overlymannlyman</a>
+                        
+                        <span class="points badge-vote-count">24 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056818677960" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">Did anybody read this?</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/m4mark"><img class="badge-user-avatar badge-normal" src="a_data/6280968_100_33.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/m4mark">m4mark</a>
+                        
+                        <span class="points badge-vote-count">88 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056818871509" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">Read what?</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div class="comment-entry badge-comment indent-1" style="display: block;">
+            <div class="avatar">
+                <div class="image-container">
+                    <a target="_blank" href="http://9gag.com/u/evilblackguy"><img class="badge-user-avatar badge-normal" src="a_data/18957508_100_2.jpg"></a>
+                    
+                </div>
+            </div>
+            <div class="payload">
+                <div class="info">
+                    <p>
+                        <a target="_blank" class="username badge-author-name badge-normal" href="http://9gag.com/u/evilblackguy">evilblackguy</a>
+                        
+                        <span class="points badge-vote-count">26 points</span><span class="badge-vote-separator"> · </span>
+                        <span class="badge-ago"><a class="comment-permalink" href="http://9gag.com/gag/azbN36j#cs_comment_id=c_14056819692915" target="_blank">18 Jul</a></span>
+                    </p>
+                </div>
+                <div class="content badge-content">@overlymannlyman yes not worth it</div>
+                <div class="action badge-action">
+                    <span><a class="reply badge-reply-trigger" href="javascript:void(0);">Reply</a></span>
+                    <div class="vote-buttons badge-vote-container">
+                        <a class="up badge-up-vote" href="javascript:void(0);">
+                            <span class="icn-up"></span>
+                            <span class="label">Upvote</span>
+                        </a>
+                        <span class="seperator"></span>
+                        <a class="down badge-down-vote" href="javascript:void(0);">
+                            <span class="icn-down"></span>
+                            <span class="label">Downvote</span>
+                        </a>
+                    </div>
+                    <span style="display: none;"><a class="admin-hide badge-hide-trigger" href="javascript:void(0);">Hide</a></span>
+                    <span style="display: none;"><a class="admin-ban badge-ban-trigger" href="javascript:void(0);">Ban</a></span>
+                </div>
+            </div><!--end .payload-->
+            <div style="display: none;" class="extra-menu">
+
+                <p><a style="display: none;" class="menu-trigger badge-author-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-author-menu">
+                    <ul>
+                        <li><a class="badge-delete-trigger" href="javascript:void(0);">Delete comment</a></li>
+                    </ul>
+                </div>
+
+                <p><a style="display: none;" class="menu-trigger badge-user-menu-trigger" href="javascript:void(0);"><span class="drop"></span></a></p>
+                <div style="display: none;" class="comment-pop-menu badge-user-menu">
+                    <ul>
+                        <li><a style="display: none;" class="badge-report-trigger" href="javascript:void(0);">Report comment</a></li>
+                        <li><a style="display: none;" class="badge-mute-trigger" href="javascript:void(0);"><span class="badge-mute-text">Mute</span> <span class="badge-mute-name"></span></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div><div id="jsid-load-more-c_14056819692915" class="comment-entry badge-comment-load-more-btn indent-1" style="display: block;">
+    <a class="collapsed-comment" href="javascript:void(0);">
+        <span>Load More Replies…</span>
+    </a>
+</div></div>
+        </div><!--end .comment-embed-->
+
+        <div class="comment-pagination badge-load-more-container">
+    <div class="btn-container">
+        <a style="display: block;" class="cmnt-btn more grey badge-load-more-trigger" href="javascript:void(0)">
+            <span class="label">Load More Comments…</span>
+        </a>
+    </div>
+    <div class="spinner-here badge-loading-indicator" style="display: none;"></div>
+</div>
+
+        
+    </section>
+
+    <script type="text/javascript">
+
+$(function() {
+    var appId = "a_dd8f2b7d304a10edaf6f29517ea0ca4100a43d1b";
+    var user = null;
+    
+    
+    post = new GCOMMENT.Post("http://9gag.com/gag/azbN36j", {"order":"score","count":10,"level":2,"subLevelCommentsCount":2,"maxMessageLength":500,"ownerId":"10917994","signature":"b533d1166b4a4975114d218a825afa53b0a410c0","commentId":null,"apiHost":"comment.9gag.com","cdnHost":"d8d94e0wul1nb.cloudfront.net"});
+
+    GCOMMENT.init({
+        'appId' : appId,
+        'timestamp' : 1406321110,
+        'urlToLink' : false,
+        'allowAnonymousComment' : false,
+        'anonymousAvatarUrl' : 'http://d1y9yo7q4hy8a7.cloudfront.net/img/comment-sys/anonymous-default-avatar.png',
+        'mentionFeature' : false    }).setCurrentUser(user);
+    var commentBox = new GCommentBox('commentSys', post, 0);
+            commentBox.onResize('init');
+    });
+
+</script>
+
+    <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-42085569-1', '9gag.com');
+ga('send', 'pageview');
+</script>
+<script>
+    if (!window.ga) {
+        window.ga = function() {};
+    }
+</script>
+
+
+
+</body></html>

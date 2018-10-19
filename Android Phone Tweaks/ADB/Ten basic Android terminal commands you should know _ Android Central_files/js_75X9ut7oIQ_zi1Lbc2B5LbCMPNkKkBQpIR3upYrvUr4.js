@@ -1,0 +1,2 @@
+$('img.lightbox,a[target=_blank][href*=".jpg"]>img').each(function(){var img=$(this);a=img.parent('a');if(a.length==0){var url=replace_image_style(img.attr('src'),'xlarge');img.wrap("<a href='"+url+"' title='"+img.attr('alt')+"' class='lightbox' />");}
+else if(!a.hasClass('lightbox'))a.addClass('lightbox');});$('body').bind('click',function(event){var a=$(event.target).closest("a.lightbox:not(.lightbox-processed),a[rel^='lightbox']:not(.lightbox-processed)");if(a.length>0){$.fancybox.init();a.addClass('lightbox-processed').fancybox();a.click();return false;}});;

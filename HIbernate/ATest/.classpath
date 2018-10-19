@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/commons-lang-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/hibernate-annotations-3.3.1.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/hibernate-commons-annotations-3.3.0.ga.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/hibernate-core-3.3.1.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/hibernate-entitymanager-3.3.2.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/javassist-3.12.0.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/mysql-connector-java-5.1.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/persistence-api-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/slf4j-log4j12-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/spring-beans-2.5.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/spring-context-2.5.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/spring-core-2.5.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/spring-jdbc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/spring-orm.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/JPA/spring-tx-2.5.6.SEC03.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/HIB Val JARS/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/HIB Val JARS/hibernate-validator-4.0.2.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/HIB Val JARS/jaxb-api-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/HIB Val JARS/jaxb-impl-2.1.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/HIB Val JARS/log4j-1.2.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/HIB Val JARS/slf4j-api-1.4.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/HIB Val JARS/slf4j-simple-1.4.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/HIB Val JARS/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Adarsh/Desktop/Libraries/Libraries/HIB Val JARS/validation-api-1.0.0.GA.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
